@@ -2,1178 +2,1248 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="description" content="Jardin University — Cannabis Consultant certificates, 20+ classes, all-access subscription and individual courses." />
-  <title>Jardin University</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jardín University</title>
+  <meta name="description" content="Jardín University — premium learning built for real-world operators." />
 
   <style>
     :root{
-      /* =========================================================
-         ✅ APPLE-STYLE LIGHT THEME (White background + black type)
-         - Background: white
-         - Text: black / charcoal
-         - Glass cards: subtle light gray
-         - Accents: keep your green/gold (ok), with a clean Apple vibe
-         - Layout unchanged
-         ========================================================= */
-
-      /* Page */
-      --bg0:#ffffff;
-      --bg1:#ffffff;
-
-      /* “Glass” cards (Apple clean) */
-      --card: rgba(17,17,17,.035);
-      --card2: rgba(17,17,17,.055);
-
-      /* Borders */
-      --stroke: rgba(17,17,17,.10);
-      --stroke2: rgba(17,17,17,.16);
-
-      /* Text */
-      --text: rgba(17,17,17,.92);
+      --pageBg:#fff;
+      --pageText:#111;
       --muted: rgba(17,17,17,.68);
-      --muted2: rgba(17,17,17,.55);
 
-      /* Brand accents (kept) */
-      --green:#19d38a;
-      --green2:#0fa958;
-      --gold:#e7d7a4;
+      --cardBg:#ffffff;
+      --cardStroke: rgba(17,17,17,.10);
+      --shadow: 0 22px 70px rgba(0,0,0,.10);
+      --shadowHover: 0 30px 95px rgba(0,0,0,.14);
 
-      /* Optional cool Apple highlight (subtle) */
-      --cool: rgba(40,120,255,.08);
-
-      /* Shadow & radius */
-      --shadow: 0 22px 60px rgba(0,0,0,.10);
       --radius: 22px;
-      --radius2: 28px;
-      --max: 1180px;
-      --ease: cubic-bezier(.2,.8,.2,1);
+      --tileRadius: 28px;
+
+      --easeOut: cubic-bezier(.2,.8,.2,1);
+      --easeApple: cubic-bezier(.22,.61,.36,1);
+
+      --brandGreen:#0FA958;
+      --saleRed:#E53935;
+
+      --dot: rgba(17,17,17,.28);
+      --dotOn: rgba(17,17,17,.85);
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      color:var(--text);
-
-      /* =========================================================
-         ✅ White background, Apple-clean light
-         - No dark gradients
-         - Very subtle “light fields” for depth
-         ========================================================= */
-      background:
-        radial-gradient(900px 700px at 18% 10%, rgba(40,120,255,.06), transparent 60%),
-        radial-gradient(900px 700px at 82% 14%, rgba(25,211,138,.06), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--pageText);
+      background: radial-gradient(1200px 700px at 75% 0%, rgba(15,169,88,.06), rgba(255,255,255,0) 55%),
+                  radial-gradient(900px 520px at 10% 18%, rgba(0,122,255,.05), rgba(255,255,255,0) 55%),
+                  var(--pageBg);
       overflow-x:hidden;
     }
 
     a{ color:inherit; text-decoration:none; }
-    button{ font:inherit; }
-    .container{ width:min(var(--max), calc(100% - 48px)); margin:0 auto; }
+    .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 
-    /* =========================================================
-       ✅ Noise overlay — DISABLED for light theme (cleaner Apple look)
-       If you ever want it back, set opacity to ~.05 and remove display:none.
-       ========================================================= */
-    .noise{ display:none; }
-
-    /* Nav */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-
-      /* ✅ White glass nav */
-      background: rgba(255,255,255,.72);
-      border-bottom: 1px solid var(--stroke);
+    /* ==============================
+       TOP BAR (tabs)
+       ============================== */
+    .topbar{
+      background: rgba(0,0,0,.86);
+      color: rgba(255,255,255,.92);
+      position: sticky;
+      top:0;
+      z-index: 60;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
+    .topbar .wrap{
+      display:flex;
+      align-items:flex-end;
+      gap: 22px;
+      height: 48px;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px; min-width: 190px;
-    }
-    .mark{
-      width:34px; height:34px; border-radius: 12px;
-
-      /* ✅ Apple-clean mark */
-      background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.85), transparent 60%),
-        linear-gradient(135deg, rgba(25,211,138,.95), rgba(231,215,164,.55));
-      box-shadow: 0 10px 26px rgba(0,0,0,.08);
-      border:1px solid var(--stroke);
-    }
-    .brand span{
-      font-weight:700;
-      letter-spacing:-.02em;
-      color: rgba(17,17,17,.92);
-    }
-    .nav-links{
-      display:flex; gap:18px; align-items:center;
-      color: var(--muted);
-      font-size:14px;
-    }
-    .nav-links a{
-      padding:8px 10px;
-      border-radius: 999px;
-      transition: background .25s var(--ease), color .25s var(--ease);
-    }
-    .nav-links a:hover{
-      background: rgba(17,17,17,.06);
-      color: rgba(17,17,17,.92);
-    }
-
-    .nav-cta{
-      display:flex; gap:10px; align-items:center;
-    }
-    .btn{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.72);
-      color: rgba(17,17,17,.92);
-      padding: 10px 14px;
-      border-radius: 999px;
-      display:inline-flex; align-items:center; gap:10px;
-      transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
-      box-shadow: 0 10px 24px rgba(0,0,0,.08);
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(17,17,17,.18);
-      background: rgba(255,255,255,.92);
-    }
-    .btn:active{ transform: translateY(0px) scale(.99); }
-
-    .btn.primary{
-      /* ✅ Apple-style “premium” button with your brand accent */
-      background: linear-gradient(135deg, rgba(25,211,138,.98), rgba(15,169,88,.92));
-      border-color: rgba(15,169,88,.35);
-      color: rgba(7,18,12,.92);
-      font-weight: 700;
-      box-shadow: 0 16px 34px rgba(15,169,88,.18);
-    }
-    .btn.primary:hover{
-      background: linear-gradient(135deg, rgba(25,211,138,1), rgba(15,169,88,.98));
-    }
-
-    .btn.small{ padding:8px 12px; font-size:14px; }
-
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.72);
-      color: var(--muted);
-      font-size: 13px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-    }
-    .dot{
-      width:8px; height:8px; border-radius: 99px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,1), rgba(15,169,88,1));
-      box-shadow: 0 0 14px rgba(15,169,88,.18);
-    }
-
-    /* Hero */
-    .hero{
-      padding: 60px 0 32px;
-      position:relative;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
+    .tabs{
+      display:flex;
       gap: 26px;
-      align-items: start;
+      height: 100%;
+      align-items:flex-end;
     }
-    .headline{
-      font-size: clamp(40px, 5vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-      margin: 18px 0 12px;
-      font-weight: 780;
-      color: rgba(17,17,17,.94);
+    .tab{
+      font-size: 14px;
+      letter-spacing:.2px;
+      padding: 12px 10px 10px;
+      border-bottom: 2px solid transparent;
+      color: rgba(255,255,255,.82);
+      transition: color .18s var(--easeOut), border-color .18s var(--easeOut);
+      white-space: nowrap;
     }
-    .subhead{
-      font-size: clamp(16px, 1.6vw, 20px);
-      line-height: 1.5;
-      color: var(--muted);
-      max-width: 54ch;
-      margin: 0 0 20px;
-    }
-    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
-    .hero-meta{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
-
-    .kpi-row{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 22px;
-    }
-    .kpi{
-      padding: 14px 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid var(--stroke);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 14px 34px rgba(0,0,0,.07);
-    }
-    .kpi strong{
-      font-size: 18px;
-      letter-spacing: -.02em;
-      color: rgba(17,17,17,.92);
-    }
-    .kpi div{
-      font-size: 12px;
-      color: var(--muted2);
-      margin-top: 4px;
+    .tab strong{ color:#fff; font-weight: 700; }
+    .tab.isActive{
+      color:#fff;
+      border-color: rgba(255,255,255,.92);
     }
 
-    /* Device / Showcase */
-    .showcase{
-      border-radius: var(--radius2);
-      border: 1px solid var(--stroke);
-
-      /* ✅ White “glass” container */
-      background:
-        radial-gradient(900px 500px at 30% 20%, rgba(40,120,255,.07), transparent 55%),
-        radial-gradient(700px 480px at 80% 10%, rgba(25,211,138,.07), transparent 55%),
-        rgba(255,255,255,.78);
-
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .showcase::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: linear-gradient(120deg, rgba(255,255,255,.85), transparent 30%, rgba(255,255,255,.65));
-      opacity:.55;
-      pointer-events:none;
-      mask-image: radial-gradient(260px 260px at var(--mx,50%) var(--my,20%), #000 0%, transparent 65%);
-    }
-    .showcase-inner{ padding: 18px; }
-
-    .device{
-      border-radius: 22px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.86);
-      overflow:hidden;
-      position:relative;
-      box-shadow: 0 18px 50px rgba(0,0,0,.08);
-    }
-    .device-top{
-      display:flex; justify-content:space-between; align-items:center;
-      padding: 10px 12px;
+    /* ==============================
+       MAIN HEADER
+       ============================== */
+    .header{
+      background: rgba(255,255,255,.78);
       border-bottom: 1px solid rgba(17,17,17,.08);
-      background: rgba(17,17,17,.03);
-      color: rgba(17,17,17,.60);
-      font-size: 12px;
-    }
-    .lights{ display:flex; gap:6px; }
-    .lights i{ width:10px; height:10px; border-radius: 99px; display:inline-block; opacity:.9; }
-    .lights i:nth-child(1){ background: rgba(255,99,99,.85); }
-    .lights i:nth-child(2){ background: rgba(255,214,99,.85); }
-    .lights i:nth-child(3){ background: rgba(120,255,180,.85); }
-
-    .device-body{
-      padding: 20px 18px 18px;
-      min-height: 360px;
-      position:relative;
-    }
-
-    .halo{
-      position:absolute;
-      inset:-140px -140px auto auto;
-      width: 360px; height: 360px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(40,120,255,.18), transparent 58%);
-      filter: blur(10px);
-      opacity:.9;
-      transform: translateZ(0);
-      animation: floaty 8s var(--ease) infinite;
-    }
-    .halo2{
-      position:absolute;
-      inset:auto auto -180px -140px;
-      width: 420px; height: 420px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 50% 50%, rgba(15,169,88,.16), transparent 62%);
-      filter: blur(10px);
-      opacity:.85;
-      animation: floaty2 10s var(--ease) infinite;
-    }
-    @keyframes floaty{
-      0%,100%{ transform: translate(0,0); }
-      50%{ transform: translate(-14px, 10px); }
-    }
-    @keyframes floaty2{
-      0%,100%{ transform: translate(0,0); }
-      50%{ transform: translate(16px, -12px); }
-    }
-
-    .mini-title{
-      font-size: 12px;
-      color: rgba(17,17,17,.50);
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin: 0 0 8px;
-    }
-    .device-h{
-      font-size: 28px;
-      margin: 0 0 10px;
-      letter-spacing: -0.03em;
-      line-height: 1.08;
-      color: rgba(17,17,17,.92);
-    }
-    .device-p{
-      margin: 0 0 18px;
-      color: rgba(17,17,17,.68);
-      line-height: 1.55;
-      max-width: 44ch;
-    }
-    .feature-chips{ display:flex; flex-wrap:wrap; gap:8px; }
-    .chip{
-      font-size: 13px;
-      color: rgba(17,17,17,.82);
-      border: 1px solid rgba(17,17,17,.10);
-      background: rgba(255,255,255,.78);
-      padding: 8px 10px;
-      border-radius: 999px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 22px rgba(0,0,0,.06);
-    }
-
-    /* Sections */
-    section{ padding: 56px 0; }
-    .section-title{
-      font-size: clamp(26px, 3vw, 40px);
-      margin: 0 0 10px;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: rgba(17,17,17,.92);
-    }
-    .section-sub{
-      margin: 0 0 26px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 68ch;
-    }
-
-    /* Cards */
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
-    }
-    .card{
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.78);
-      border: 1px solid var(--stroke);
-      box-shadow: 0 18px 55px rgba(0,0,0,.08);
-      padding: 18px;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(12px);
-      transform: translateY(0);
-      transition: transform .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
-    }
-    .card:hover{
-      transform: translateY(-4px);
-      border-color: rgba(17,17,17,.18);
-      background: rgba(255,255,255,.92);
-    }
-    .card h3{
-      margin: 10px 0 6px;
-      font-size: 18px;
-      letter-spacing: -.02em;
-      color: rgba(17,17,17,.92);
-    }
-    .card p{
-      margin: 0;
-      color: rgba(17,17,17,.68);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-    .icon{
-      width: 40px; height: 40px;
-      border-radius: 14px;
-      border: 1px solid rgba(17,17,17,.10);
-      background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.9), transparent 62%),
-        rgba(255,255,255,.78);
-      display:grid; place-items:center;
-      box-shadow: 0 12px 26px rgba(0,0,0,.06);
-      color: rgba(17,17,17,.82);
-    }
-    .icon svg{ width: 20px; height: 20px; opacity: .95; }
-
-    /* Pricing */
-    .pricing-wrap{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-    .price-card{
-      border-radius: var(--radius2);
-      background: rgba(255,255,255,.78);
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      position:relative;
-      overflow:hidden;
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: sticky;
+      top: 48px;
+      z-index: 55;
     }
-    .price-card.featured{
-      border-color: rgba(15,169,88,.24);
-      background:
-        radial-gradient(600px 260px at 30% 10%, rgba(15,169,88,.10), transparent 60%),
-        radial-gradient(600px 260px at 70% 0%, rgba(40,120,255,.08), transparent 55%),
-        rgba(255,255,255,.78);
-    }
-    .badge{
-      display:inline-flex;
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(7,18,12,.92);
-      background: linear-gradient(135deg, rgba(231,215,164,.92), rgba(25,211,138,.80));
-      border: 1px solid rgba(17,17,17,.12);
-      box-shadow: 0 14px 34px rgba(0,0,0,.08);
-    }
-    .price-head{
-      display:flex; justify-content:space-between; align-items:flex-start;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .price-card h3{
-      margin: 0 0 6px;
-      font-size: 20px;
-      letter-spacing: -.02em;
-      color: rgba(17,17,17,.92);
-    }
-    .price-card .desc{
-      margin: 0 0 14px;
-      color: rgba(17,17,17,.68);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-    .price{
-      display:flex; align-items:flex-end; gap:10px;
-      margin: 10px 0 12px;
-    }
-    .price .now{
-      font-size: 46px;
-      letter-spacing: -0.04em;
-      font-weight: 800;
-      line-height: 1;
-      color: rgba(17,17,17,.92);
-    }
-    .price .was{
-      color: rgba(17,17,17,.55);
-      text-decoration: line-through;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .price .per{
-      color: rgba(17,17,17,.55);
-      margin-bottom: 10px;
-      font-size: 13px;
-    }
-    .ul{
-      margin: 14px 0 18px;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap: 10px;
-    }
-    .ul li{
-      display:flex; gap:10px; align-items:flex-start;
-      color: rgba(17,17,17,.68);
-      line-height: 1.45;
-      font-size: 14px;
-    }
-    .check{
-      width: 18px; height: 18px; margin-top: 2px;
-      border-radius: 99px;
-      background: rgba(15,169,88,.14);
-      border: 1px solid rgba(15,169,88,.28);
-      display:grid; place-items:center;
-      flex: 0 0 auto;
-      color: rgba(7,18,12,.82);
-    }
-    .check svg{ width: 12px; height: 12px; }
-
-    .toggle{
-      display:flex; align-items:center; gap:10px;
-      margin: 10px 0 0;
-      color: rgba(17,17,17,.68);
-      font-size: 13px;
-    }
-    .switch{
-      width: 48px; height: 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(17,17,17,.14);
-      background: rgba(17,17,17,.06);
-      position:relative;
-      cursor:pointer;
-      transition: background .25s var(--ease), border-color .25s var(--ease);
-      flex: 0 0 auto;
-    }
-    .switch::after{
-      content:"";
-      position:absolute; top: 50%; left: 4px;
-      width: 20px; height: 20px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.95);
-      transform: translate(0,-50%);
-      transition: transform .25s var(--ease);
-      box-shadow: 0 12px 22px rgba(0,0,0,.12);
-    }
-    .switch.on{
-      background: rgba(15,169,88,.18);
-      border-color: rgba(15,169,88,.28);
-    }
-    .switch.on::after{
-      transform: translate(20px,-50%);
-      background: rgba(255,255,255,1);
-    }
-
-    /* Courses */
-    .courses-tools{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 14px;
+    .header .wrap{
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      padding: 14px 20px;
       flex-wrap: wrap;
     }
-    .search{
-      flex: 1 1 320px;
-      display:flex; align-items:center; gap:10px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.78);
-      border-radius: 999px;
-      padding: 10px 12px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 12px 26px rgba(0,0,0,.06);
-      color: rgba(17,17,17,.82);
-    }
-    .search input{
-      width:100%;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: rgba(17,17,17,.92);
-      font-size: 14px;
-    }
-    .search input::placeholder{ color: rgba(17,17,17,.45); }
 
-    .courses-grid{
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 210px;
+      flex: 0 0 auto;
+    }
+    .brandLogo{
+      height: 28px;
+      width: auto;
+      display:block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.10));
+    }
+    .brandName{
+      font-weight: 800;
+      letter-spacing: .2px;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .brandSub{
+      display:block;
+      font-weight: 600;
+      color: rgba(17,17,17,.55);
+      font-size: 12px;
+      margin-top: 2px;
+      letter-spacing: .2px;
+    }
+
+    .navLinks{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      flex: 0 0 auto;
+    }
+    .navPill{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.7);
+      font-size: 14px;
+      color: rgba(17,17,17,.78);
+      transition: transform .18s var(--easeOut), background .18s var(--easeOut);
+      white-space: nowrap;
+    }
+    .navPill:hover{ transform: translateY(-1px); background:#fff; }
+
+    .search{
+      flex: 1 1 520px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 240px;
+    }
+    .searchBox{
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+    }
+    .searchInput{
+      width: 100%;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.92);
+      padding: 0 52px 0 16px;
+      font-size: 15px;
+      outline: none;
+      transition: box-shadow .18s var(--easeOut), border-color .18s var(--easeOut);
+    }
+    .searchInput:focus{
+      border-color: rgba(0,0,0,.18);
+      box-shadow: 0 14px 32px rgba(0,0,0,.08);
+    }
+    .searchBtn{
+      position:absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(0,0,0,.90);
+      color: #fff;
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      place-items:center;
+      cursor:pointer;
+      transition: transform .18s var(--easeOut), opacity .18s var(--easeOut);
+    }
+    .searchBtn:active{ transform: translateY(-50%) scale(.98); }
+    .searchBtn svg{ width: 18px; height: 18px; stroke: #fff; stroke-width: 2.5; fill:none; }
+
+    .auth{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex: 0 0 auto;
+      margin-left: auto;
+    }
+    .linkBtn{
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: rgba(17,17,17,.72);
+    }
+    .primaryBtn{
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.14);
+      background: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      transition: transform .18s var(--easeOut), box-shadow .18s var(--easeOut);
+      white-space: nowrap;
+    }
+    .primaryBtn:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.10); }
+
+    /* ==============================
+       Sections
+       ============================== */
+    .section{ padding: 22px 0; }
+
+    .sectionTitleRow{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 16px;
+      margin-top: 10px;
+      margin-bottom: 14px;
+    }
+
+    .kicker{
+      color: rgba(17,17,17,.65);
+      font-size: 13px;
+      letter-spacing: .18px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    /* ==============================
+       Rail
+       ============================== */
+    .heroRail{ position: relative; margin-top: 10px; }
+    .railViewport{ overflow: hidden; border-radius: calc(var(--tileRadius) + 6px); }
+    .rail{
+      display:flex;
+      gap: 18px;
+      padding: 12px 12px 18px;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .rail::-webkit-scrollbar{ display:none; }
+
+    .railFade{
+      pointer-events:none;
+      position:absolute;
+      top:0;
+      bottom:0;
+      width: 64px;
+      z-index: 5;
+    }
+    .railFade.left{
+      left:0;
+      background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0));
+    }
+    .railFade.right{
+      right:0;
+      background: linear-gradient(270deg, rgba(255,255,255,1), rgba(255,255,255,0));
+    }
+
+    .tile{
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: min(860px, calc(100vw - 64px));
+      border-radius: var(--tileRadius);
+      background: var(--cardBg);
+      border: 1px solid var(--cardStroke);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      transform: translateZ(0);
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
+      min-height: 340px;
+    }
+    .tile:hover{ transform: translateY(-2px); box-shadow: var(--shadowHover); }
+    .tileGrid{ display:grid; grid-template-columns: 1.05fr .95fr; min-height: 340px; }
+    .tileBody{
+      padding: 44px 44px 40px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap: 16px;
+    }
+    .tileEyebrow{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing:.25px;
+      text-transform: lowercase;
+      font-size: 16px;
+      opacity: .95;
+    }
+    .tileEyebrow .miniTag{
+      display:inline-flex;
+      align-items:center;
+      height: 22px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.22);
+      font-size: 12px;
+      letter-spacing:.35px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .tileTitle{
+      font-size: clamp(28px, 3.2vw, 44px);
+      letter-spacing: -.02em;
+      line-height: 1.05;
+      margin: 0;
+      font-weight: 900;
+    }
+    .tileDesc{
+      margin: 0;
+      color: rgba(255,255,255,.86);
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 46ch;
+    }
+    .tileCtaRow{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      height: 44px;
+      padding: 0 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      background: rgba(255,255,255,.92);
+      color: #0b1b12;
+      border: 1px solid rgba(255,255,255,.18);
+      transition: transform .18s var(--easeOut), opacity .18s var(--easeOut);
+      user-select:none;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .cta:active{ transform: scale(.99); }
+    .cta svg{ width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.6; fill:none; }
+
+    .tileMedia{
+      position: relative;
+      min-height: 340px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .t1{ background: radial-gradient(900px 500px at 60% 40%, rgba(255,115,189,.35), rgba(0,0,0,0) 60%),
+                   radial-gradient(680px 420px at 80% 10%, rgba(0,122,255,.34), rgba(0,0,0,0) 55%),
+                   #052a63; }
+    .t2{ background: radial-gradient(900px 540px at 75% 55%, rgba(0,210,255,.22), rgba(0,0,0,0) 60%),
+                   radial-gradient(680px 420px at 35% 20%, rgba(255,255,255,.16), rgba(0,0,0,0) 55%),
+                   #0558d4; }
+    .t3{ background: radial-gradient(900px 540px at 75% 50%, rgba(255,0,128,.14), rgba(0,0,0,0) 58%),
+                   radial-gradient(720px 420px at 20% 30%, rgba(0,122,255,.12), rgba(0,0,0,0) 58%),
+                   #fff; color: #111; }
+    .t3 .tileDesc{ color: rgba(17,17,17,.70); }
+    .t3 .cta{
+      background: rgba(0,122,255,.92);
+      color: #fff;
+      border-color: rgba(0,122,255,.35);
+    }
+
+    /* price badge on tile 1 */
+    .badge{
+      position:absolute;
+      right: 26px;
+      bottom: 26px;
+      background: rgba(0,0,0,.32);
+      color: rgba(255,255,255,.95);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 14px 16px;
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-weight: 950;
+      text-align:center;
+      line-height: 1.05;
+      box-shadow: 0 22px 60px rgba(0,0,0,.18);
+    }
+    .badge .big{ font-size: 34px; letter-spacing: -.02em; }
+    .badge .small{ font-size: 12px; opacity: .9; font-weight: 750; margin-top: 2px; }
+
+    /* ==============================
+       Apple dots (carousel)
+       ============================== */
+    .railNav{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .dots{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 14px 34px rgba(0,0,0,.06);
+    }
+    .dotBtn{
+      width: 6px;
+      height: 6px;
+      border-radius: 99px;
+      background: var(--dot);
+      border: 0;
+      padding:0;
+      cursor:pointer;
+      transition: transform .18s var(--easeOut), background .18s var(--easeOut), opacity .18s var(--easeOut);
+    }
+    .dotBtn:hover{ transform: scale(1.2); }
+    .dotBtn.isActive{ background: var(--dotOn); transform: scale(1.25); }
+
+    /* ==============================
+       Quick tiles (below wide tiles)
+       ============================== */
+    .quickTiles{ padding-top: 12px; padding-bottom: 6px; }
+    .quickGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .quickTile{
+      border-radius: 26px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(17,17,17,.08);
+      box-shadow: 0 18px 70px rgba(0,0,0,.06);
+      padding: 18px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap: 14px;
+      min-height: 88px;
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
+      cursor: pointer;
+      user-select:none;
+    }
+    .quickTile:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 26px 92px rgba(0,0,0,.09);
+    }
+    .quickTitle{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -.01em;
+      font-weight: 900;
+      color: rgba(17,17,17,.92);
+    }
+    .quickIcon{
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(80px 60px at 50% 40%, rgba(0,122,255,.12), rgba(0,0,0,0) 65%),
+                  rgba(124,92,255,.08);
+      border: 1px solid rgba(17,17,17,.06);
+    }
+    .quickIcon svg{
+      width: 28px;
+      height: 28px;
+      stroke: rgba(0,122,255,.85);
+      stroke-width: 2.2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ==============================
+       Hot New Releases
+       ============================== */
+    .hotWrap{
+      border-radius: 34px;
+      background: linear-gradient(90deg, #1d66ff, #36b6ff, #43d7b4);
+      padding: 18px;
+      box-shadow: 0 26px 90px rgba(0,0,0,.12);
+    }
+    .hotTitle{
+      color: rgba(255,255,255,.95);
+      font-weight: 950;
+      letter-spacing: -.01em;
+      margin: 0 0 12px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 18px;
+    }
+    .hotTitle svg{ width: 18px; height: 18px; stroke:#fff; stroke-width:2.6; fill:none; }
+
+    .hotRail{
+      display:flex;
+      gap: 18px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width:none;
+    }
+    .hotRail::-webkit-scrollbar{ display:none; }
+
+    .hotCard{
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: min(320px, calc(100vw - 96px));
+      border-radius: 22px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 18px 55px rgba(0,0,0,.12);
+      overflow:hidden;
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
+    }
+    .hotCard:hover{ transform: translateY(-2px); box-shadow: 0 26px 85px rgba(0,0,0,.16); }
+    .hotImg{
+      height: 170px;
+      background: linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,.02));
+    }
+    .hotBody{ padding: 14px 14px 16px; }
+    .hotBrand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: rgba(17,17,17,.68);
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .hotBrand .miniLogo{
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.8);
+      display:grid; place-items:center;
+      font-weight: 950;
+      font-size: 12px;
+      color: rgba(17,17,17,.62);
+    }
+    .hotName{
+      margin: 0 0 10px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      line-height: 1.15;
+      font-size: 18px;
+    }
+    .hotMeta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color: rgba(17,17,17,.60);
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    /* ==============================
+       Catalog + sale row
+       ============================== */
+    .catalogHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      margin-top: 8px;
+    }
+    .catalogTitle{
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -.01em;
+      font-weight: 950;
+      color: rgba(17,17,17,.92);
+    }
+    .catalogTools{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .courseSearch{
+      width: min(520px, 100%);
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.90);
+      padding: 0 16px;
+      font-size: 15px;
+      outline:none;
+      transition: box-shadow .18s var(--easeOut), border-color .18s var(--easeOut);
+    }
+    .courseSearch:focus{
+      border-color: rgba(0,0,0,.18);
+      box-shadow: 0 14px 32px rgba(0,0,0,.08);
+    }
+
+    .allAccessRow{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 18px;
+      color: rgba(17,17,17,.70);
+      font-size: 13px;
+    }
+    .saleSwitch{
+      width: 56px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.12);
+      background: rgba(17,17,17,.08);
+      position: relative;
+      cursor: pointer;
+      transition: background .18s var(--easeOut), border-color .18s var(--easeOut);
+      user-select:none;
+    }
+    .saleSwitch::after{
+      content:"";
+      position:absolute;
+      top: 3px;
+      left: 3px;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      transition: transform .18s var(--easeOut);
+    }
+    .saleSwitch.on{
+      background: rgba(15,169,88,.16);
+      border-color: rgba(15,169,88,.18);
+    }
+    .saleSwitch.on::after{ transform: translateX(24px); }
+
+    .pricePill{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.72);
+      font-weight: 900;
+      letter-spacing:.1px;
+    }
+    .strike{
+      font-weight: 900;
+      color: rgba(17,17,17,.45);
+      text-decoration: line-through;
+    }
+    .livePrice{
+      color: rgba(17,17,17,.90);
+      transition: color .18s var(--easeOut);
+    }
+    .livePrice.isSale{ color: var(--saleRed); }
+
+    .btnGhost{
+      height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.12);
+      background: rgba(255,255,255,.82);
+      color: rgba(17,17,17,.88);
+      font-weight: 900;
+      cursor:pointer;
+      transition: transform .18s var(--easeOut);
+      white-space: nowrap;
+    }
+    .btnGhost:active{ transform: scale(.99); }
+
+    /* ==============================
+       Courses grid
+       ============================== */
+    .coursesGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
     .course{
-      border-radius: var(--radius);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.78);
-      overflow:hidden;
-      box-shadow: 0 18px 55px rgba(0,0,0,.08);
-      transition: transform .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
-      min-height: 170px;
-      display:flex;
-      flex-direction: column;
-      position:relative;
+      border-radius: 22px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 18px 60px rgba(0,0,0,.07);
+      padding: 16px 16px 14px;
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple), opacity .32s var(--easeOut);
+      transform: translateY(8px);
+      opacity: 0;
+    }
+    .course.isIn{
+      transform: translateY(0);
+      opacity: 1;
     }
     .course:hover{
-      transform: translateY(-4px);
-      border-color: rgba(17,17,17,.18);
-      background: rgba(255,255,255,.92);
+      transform: translateY(-2px);
+      box-shadow: 0 26px 85px rgba(0,0,0,.10);
     }
     .course-top{
-      padding: 14px 14px 10px;
-      display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
     }
     .course h4{
       margin: 0;
       font-size: 16px;
-      letter-spacing: -.02em;
-      line-height: 1.2;
-      color: rgba(17,17,17,.92);
+      letter-spacing: -.01em;
+      font-weight: 950;
+      line-height: 1.15;
     }
     .tag{
-      font-size: 12px;
-      color: rgba(7,18,12,.92);
-      background: linear-gradient(135deg, rgba(25,211,138,.92), rgba(231,215,164,.62));
-      border: 1px solid rgba(17,17,17,.12);
-      border-radius: 999px;
-      padding: 6px 10px;
-      white-space: nowrap;
-    }
-    .course-mid{
-      padding: 0 14px 14px;
-      color: rgba(17,17,17,.68);
-      line-height: 1.55;
-      font-size: 13px;
-      flex: 1 1 auto;
-    }
-    .course-bottom{
-      padding: 12px 14px;
-      border-top: 1px solid rgba(17,17,17,.08);
-      display:flex; align-items:center; justify-content:space-between; gap: 10px;
-      background: rgba(17,17,17,.03);
-    }
-    .price-mini{
-      display:flex; align-items:baseline; gap: 8px;
-      color: rgba(17,17,17,.92);
-      font-weight: 700;
-    }
-    .price-mini span{ color: rgba(17,17,17,.55); font-weight: 600; font-size: 12px; }
-    .course .btn.small{ box-shadow:none; }
-
-    /* Certificate section */
-    .certificate{
-      border-radius: var(--radius2);
-      background:
-        radial-gradient(700px 260px at 20% 20%, rgba(40,120,255,.06), transparent 60%),
-        radial-gradient(700px 260px at 70% 10%, rgba(15,169,88,.06), transparent 60%),
-        rgba(255,255,255,.78);
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      overflow:hidden;
-      position:relative;
-    }
-    .certificate .seal{
-      width: 110px; height: 110px;
-      border-radius: 999px;
-      border: 1px solid rgba(17,17,17,.12);
-      background:
-        radial-gradient(40px 40px at 30% 25%, rgba(255,255,255,.95), transparent 60%),
-        radial-gradient(circle at 50% 50%, rgba(15,169,88,.10), transparent 62%),
-        rgba(255,255,255,.86);
-      box-shadow: 0 20px 50px rgba(0,0,0,.10);
-      display:grid; place-items:center;
-      color: rgba(17,17,17,.82);
-    }
-    .certificate .seal svg{ width: 48px; height: 48px; opacity: .95; }
-    .cert-right{
-      border-radius: 18px;
-      border: 1px solid rgba(17,17,17,.12);
-      background: rgba(255,255,255,.86);
-      padding: 16px;
-      overflow:hidden;
-      position:relative;
-      box-shadow: 0 18px 45px rgba(0,0,0,.08);
-    }
-    .cert-lines{
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(17,17,17,.08);
-      margin: 10px 0;
-    }
-    .cert-lines.w{ width: 70%; }
-    .cert-lines.w2{ width: 55%; }
-    .cert-lines.w3{ width: 84%; }
-    .cert-lines.w4{ width: 45%; }
-
-    /* Footer */
-    footer{
-      padding: 44px 0 60px;
-      color: rgba(17,17,17,.55);
-      border-top: 1px solid rgba(17,17,17,.10);
-      background: rgba(255,255,255,.90);
-    }
-    .foot{
-      display:flex; justify-content:space-between; align-items:flex-start; gap: 18px;
-      flex-wrap: wrap;
-    }
-    .foot small{ display:block; line-height: 1.7; }
-    .links{ display:flex; gap: 10px; flex-wrap: wrap; }
-    .links a{
-      padding: 8px 10px;
+      height: 26px;
+      padding: 0 10px;
       border-radius: 999px;
       border: 1px solid rgba(17,17,17,.10);
-      background: rgba(255,255,255,.72);
-      color: rgba(17,17,17,.70);
-      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+      background: rgba(15,169,88,.08);
+      color: rgba(7,70,41,.88);
+      font-size: 12px;
+      font-weight: 900;
+      display:inline-flex;
+      align-items:center;
+      white-space: nowrap;
+      flex: 0 0 auto;
     }
-    .links a:hover{
-      background: rgba(255,255,255,.92);
-      border-color: rgba(17,17,17,.16);
-      transform: translateY(-1px);
+    .course-mid{
+      color: rgba(17,17,17,.66);
+      font-size: 14px;
+      line-height: 1.45;
+      margin-bottom: 12px;
+      min-height: 44px;
+    }
+    .course-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .price-mini{
+      font-weight: 950;
+      letter-spacing: -.01em;
+      color: rgba(17,17,17,.90);
+    }
+    .price-mini span{
+      font-weight: 700;
+      color: rgba(17,17,17,.55);
+      font-size: 12px;
+      margin-left: 6px;
+    }
+    .btn{
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.90);
+      font-weight: 900;
+      cursor:pointer;
+      transition: transform .18s var(--easeOut), box-shadow .18s var(--easeOut);
+      box-shadow: 0 10px 26px rgba(0,0,0,.06);
+    }
+    .btn.small{ height: 36px; padding: 0 12px; }
+    .btn:active{ transform: scale(.99); }
+    .btn:hover{ box-shadow: 0 14px 34px rgba(0,0,0,.08); transform: translateY(-1px); }
+
+    /* ==============================
+       Merch section
+       ============================== */
+    .merchHeader{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      margin-top: 6px;
+    }
+    .merchTitle{
+      margin:0;
+      font-size: 22px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      color: rgba(17,17,17,.92);
+    }
+    .merchGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .merchTile{
+      border-radius: 22px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 18px 60px rgba(0,0,0,.07);
+      overflow:hidden;
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
+      min-height: 280px;
+    }
+    .merchTile:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 26px 85px rgba(0,0,0,.10);
+    }
+    .merchImg{
+      height: 170px;
+      background: linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,.02));
+      display:grid;
+      place-items:center;
+      color: rgba(17,17,17,.45);
+      font-weight: 900;
+      letter-spacing:.2px;
+      user-select:none;
+    }
+    .merchBody{ padding: 14px 14px 16px; }
+    .merchName{
+      margin:0 0 6px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      font-size: 16px;
+    }
+    .merchDesc{
+      margin:0;
+      color: rgba(17,17,17,.62);
+      font-weight: 650;
+      font-size: 14px;
+      line-height: 1.35;
     }
 
-    /* Reveal animations */
-    .reveal{ opacity:0; transform: translateY(14px) scale(.985); }
-    .reveal.in{ opacity:1; transform: translateY(0) scale(1); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-    .delay1{ transition-delay:.08s !important; }
-    .delay2{ transition-delay:.16s !important; }
-    .delay3{ transition-delay:.24s !important; }
-    .delay4{ transition-delay:.32s !important; }
-
-    /* Mobile */
+    /* ==============================
+       Responsive
+       ============================== */
     @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .kpi-row{ grid-template-columns: 1fr; }
-      .grid-3{ grid-template-columns: 1fr; }
-      .pricing-wrap{ grid-template-columns: 1fr; }
-      .courses-grid{ grid-template-columns: 1fr; }
-      .certificate{ grid-template-columns: 1fr; }
-      .nav-links{ display:none; }
-      .brand{ min-width: auto; }
-      .container{ width:min(var(--max), calc(100% - 28px)); }
-      section{ padding: 44px 0; }
-      .hero{ padding: 44px 0 20px; }
-      .device-body{ min-height: 320px; }
+      .tileGrid{ grid-template-columns: 1fr; }
+      .tileMedia{ min-height: 240px; }
+      .tile{ min-height: unset; }
+      .tileBody{ padding: 34px 28px 26px; }
+
+      .quickGrid{ grid-template-columns: 1fr; }
+
+      .coursesGrid{ grid-template-columns: 1fr; }
+      .merchGrid{ grid-template-columns: 1fr; }
     }
 
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
-      .reveal{ opacity:1; transform:none; }
+    @media (max-width: 520px){
+      .topbar .wrap{ gap: 12px; }
+      .tabs{ gap: 14px; }
+      .tab{ padding: 12px 6px 10px; }
+      .navLinks{ display:none; }
+      .brandLogo{ height: 24px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- ✅ Light theme: noise overlay removed for Apple-clean feel -->
-  <div class="noise"></div>
 
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Jardin University home">
-        <div class="mark" aria-hidden="true"></div>
-        <span>Jardin University</span>
+  <!-- Tabs -->
+  <div class="topbar">
+    <div class="wrap">
+      <nav class="tabs" aria-label="Audience">
+        <a class="tab isActive" href="#"><span>For <strong>Individuals</strong></span></a>
+        <a class="tab" href="#"><span>For <strong>Businesses</strong></span></a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="wrap">
+      <a class="brand" href="#">
+        <img class="brandLogo" src="media/JU-Crest-Logo-Black.png" alt="Jardín University" />
+        <span>
+          <span class="brandName">Jardín University</span>
+          <span class="brandSub">Premium Learning</span>
+        </span>
       </a>
 
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#program">Program</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#courses">Classes</a>
-        <a href="#certificate">Certificate</a>
+      <nav class="navLinks" aria-label="Primary">
+        <a class="navPill" href="#catalog">Courses</a>
+        <a class="navPill" href="#merch">Merch</a>
       </nav>
 
-      <div class="nav-cta">
-        <a class="btn small" href="#courses">Browse classes</a>
-        <a class="btn primary small" href="#pricing">Get access</a>
+      <div class="search" role="search">
+        <div class="searchBox">
+          <input id="headerSearch" class="searchInput" type="search" placeholder="What do you want to learn?" aria-label="Search courses" />
+          <button id="headerSearchBtn" class="searchBtn" aria-label="Search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"></path>
+              <path d="M21 21l-4.3-4.3"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="auth">
+        <a class="linkBtn" href="#">Log In</a>
+        <a class="primaryBtn" href="#">Join for Free</a>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
+  <main class="wrap">
+
+    <!-- WIDE TILES -->
+    <section class="section">
+      <div class="sectionTitleRow">
+        <div class="kicker">Cannabis Consultant Certificate</div>
+
+        <div class="railNav" aria-label="Carousel dots">
+          <div class="dots" id="dots"></div>
+        </div>
+      </div>
+
+      <div class="heroRail">
+        <div class="railFade left"></div>
+        <div class="railFade right"></div>
+
+        <div class="railViewport">
+          <div class="rail" id="rail">
+
+            <!-- Tile 1 -->
+            <article class="tile t1" aria-label="Jardín Plus promotion">
+              <div class="tileGrid">
+                <div class="tileBody" style="color: rgba(255,255,255,.92);">
+                  <div class="tileEyebrow">Jardín <span class="miniTag">PLUS</span></div>
+                  <h3 class="tileTitle">Next level skills. New Year savings.</h3>
+                  <p class="tileDesc">Premium, mobile-first learning that’s clean, fast, and built for real work.</p>
+                  <div class="tileCtaRow">
+                    <button class="cta" id="ctaPlus" type="button">
+                      Save 50% on Jardín Plus
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="tileMedia">
+                  <div class="badge" aria-label="Price badge">
+                    <div class="big" id="badgePrice">$199</div>
+                    <div class="small">/ year</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tile 2 -->
+            <article class="tile t2" aria-label="Jardín for Teams promotion">
+              <div class="tileGrid">
+                <div class="tileBody" style="color: rgba(255,255,255,.92);">
+                  <div class="tileEyebrow">Jardín <span style="font-weight:800;opacity:.92;">for teams</span></div>
+                  <h3 class="tileTitle">Train your team in top skills worldwide.</h3>
+                  <p class="tileDesc">Structured learning that supports standards, and consistent floor performance.</p>
+                  <div class="tileCtaRow">
+                    <button class="cta" type="button">
+                      Save 50% on Teams
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="tileMedia"></div>
+              </div>
+            </article>
+
+            <!-- Tile 3 -->
+            <article class="tile t3" aria-label="Career tile">
+              <div class="tileGrid">
+                <div class="tileBody">
+                  <div class="tileEyebrow" style="color: rgba(17,17,17,.82);">Jardín University</div>
+                  <h3 class="tileTitle">Start, switch, or advance your career.</h3>
+                  <p class="tileDesc">Grow with 10,000+ students.</p>
+                  <div class="tileCtaRow">
+                    <a class="cta" href="#catalog">
+                      Explore the class library
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+                    </a>
+                  </div>
+                </div>
+                <div class="tileMedia"></div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 tiles below wide tiles -->
+    <section class="quickTiles">
+      <div class="quickGrid">
+        <article class="quickTile" id="qtCareer" role="button" tabindex="0" aria-label="Launch a new career">
+          <h3 class="quickTitle">Launch a new career</h3>
+          <div class="quickIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 20h16"></path><path d="M7 17l4-10 6 4-3 6"></path><path d="M13 7l3-3"></path></svg>
+          </div>
+        </article>
+
+        <article class="quickTile" id="qtSkills" role="button" tabindex="0" aria-label="Gain in-demand skills">
+          <h3 class="quickTitle">Gain in-demand skills</h3>
+          <div class="quickIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 7h10v10H7z"></path><path d="M9 5h6"></path><path d="M9 19h6"></path></svg>
+          </div>
+        </article>
+
+        <article class="quickTile" id="qtSpec" role="button" tabindex="0" aria-label="Earn a specialization">
+          <h3 class="quickTitle">Earn a specialization</h3>
+          <div class="quickIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3l8 5-8 5-8-5 8-5Z"></path><path d="M4 10v6c0 2 4 4 8 4s8-2 8-4v-6"></path></svg>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Hot New Releases -->
+    <section class="section" aria-label="Hot new releases">
+      <div class="hotWrap">
+        <h2 class="hotTitle">
+          <span>Hot New Releases</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </h2>
+
+        <div class="hotRail" id="hotRail">
+          <article class="hotCard">
+            <div class="hotImg"></div>
+            <div class="hotBody">
+              <div class="hotBrand"><span class="miniLogo">JU</span> Jardín University</div>
+              <h3 class="hotName">Budtender Foundations: Fast Track</h3>
+              <div class="hotMeta"><span>Professional Certificate</span><span>★ 4.7</span></div>
+            </div>
+          </article>
+
+          <article class="hotCard">
+            <div class="hotImg"></div>
+            <div class="hotBody">
+              <div class="hotBrand"><span class="miniLogo">JU</span> Jardín University</div>
+              <h3 class="hotName">Terpenes: Sensory + Selling</h3>
+              <div class="hotMeta"><span>Single course</span><span>★ 4.8</span></div>
+            </div>
+          </article>
+
+          <article class="hotCard">
+            <div class="hotImg"></div>
+            <div class="hotBody">
+              <div class="hotBrand"><span class="miniLogo">JU</span> Jardín University</div>
+              <h3 class="hotName">Luxury Service Standards (2026)</h3>
+              <div class="hotMeta"><span>Professional Certificate</span><span>★ 4.7</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE CATALOG -->
+    <section class="section" id="catalog">
+      <div class="catalogHeader">
         <div>
-          <div class="pill reveal">
-            <span class="dot" aria-hidden="true"></span>
-            <span>20+ classes • Cannabis Consultant Certificates • Built for real-world operators</span>
-          </div>
-
-          <h1 class="headline reveal delay1">
-            Jardín University
-          </h1>
-
-          <p class="subhead reveal delay2">
-            Learn fast, earn certificates, and build credibility with a premium learning experience.
-          </p>
-
-          <div class="hero-actions reveal delay3">
-            <a class="btn primary" href="#pricing" id="ctaAllAccess">
-              Get All-Access
-              <span aria-hidden="true">→</span>
-            </a>
-            <a class="btn" href="#courses">
-              Explore 20+ classes
-              <span aria-hidden="true">↘</span>
-            </a>
-          </div>
-
-          <div class="hero-meta reveal delay4">
-            <span class="pill"><span class="dot" aria-hidden="true"></span> All-access subscription: <strong>$399</strong> <span style="opacity:.75">(sale $199)</span></span>
-            <span class="pill"><span class="dot" aria-hidden="true"></span> Single course: <strong>$99</strong></span>
-          </div>
-
-          <div class="kpi-row">
-            <div class="kpi reveal">
-              <strong><span data-count="20">20</span>+</strong>
-              <div>Classes across product, sales, compliance, and operations</div>
-            </div>
-       <div class="kpi reveal delay1">
-  <strong>Certificates</strong>
-  <div>Consultant track + course completions (PDF-ready)</div>
-</div>
-            <div class="kpi reveal delay2">
-              <strong><span data-count="100">100</span>%</strong>
-              <div>Mobile-first learning experience (fast, clean, premium)</div>
-            </div>
-          </div>
+          <div class="kicker">Explore the class library</div>
+          <h2 class="catalogTitle">Course catalog</h2>
         </div>
 
-        <!-- Right: showcase -->
-        <div class="showcase reveal delay2" id="program">
-          <div class="showcase-inner">
-            <div class="device" id="device">
-              <div class="device-top">
-                <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
-                <div>Jardin University • Premium Learning</div>
-                <div style="opacity:.7">Live</div>
-              </div>
-              <div class="device-body">
-                <div class="halo" aria-hidden="true"></div>
-                <div class="halo2" aria-hidden="true"></div>
-
-                <div class="mini-title">CANNABIS CONSULTANT CERTIFICATE</div>
-                <h2 class="device-h">Learn the skills that move your career forward.</h2>
-                <p class="device-p">
-                  Learn anywhere. Built for real-world work.
-                </p>
-
-                <div class="feature-chips">
-                  <span class="chip">Certificates</span>
-                  <span class="chip">Quizzes</span>
-                  <span class="chip">Worksheets</span>
-                  <span class="chip">Specializations</span>
-                  <span class="chip">Operator-Ready</span>
-                </div>
-
-                <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-                  <a class="btn small primary" href="#pricing">Enroll now</a>
-                  <a class="btn small" href="#certificate">See certificate</a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="catalogTools">
+          <input id="courseSearch" class="courseSearch" type="search" placeholder="Search courses (e.g., terpenes, sales, edibles)" aria-label="Search course catalog" />
         </div>
+      </div>
 
+      <div class="allAccessRow" aria-label="All-access pricing">
+        <div class="saleSwitch on" id="saleSwitch" role="switch" aria-checked="true" tabindex="0" title="Toggle sale price"></div>
+        <div class="pricePill">
+          <span>All-access</span>
+          <span class="strike" id="priceOld">$399</span>
+          <span class="livePrice isSale" id="priceNew">$199</span>
+        </div>
+        <button class="btnGhost" id="buyAllAccess" type="button">Get All-Access</button>
+      </div>
+
+      <div id="coursesGrid" class="coursesGrid" aria-label="Courses grid"></div>
+    </section>
+
+    <!-- MERCH SECTION (under catalog) -->
+    <section class="section" id="merch">
+      <div class="merchHeader">
+        <div>
+          <div class="kicker">Jardín University</div>
+          <h2 class="merchTitle">Merch</h2>
+        </div>
+      </div>
+
+      <div class="merchGrid" aria-label="Merch grid">
+        <article class="merchTile">
+          <div class="merchImg">Image 1</div>
+          <div class="merchBody"><h3 class="merchName">Merch Item 01</h3><p class="merchDesc">Drop an image above and rename this.</p></div>
+        </article>
+        <article class="merchTile">
+          <div class="merchImg">Image 2</div>
+          <div class="merchBody"><h3 class="merchName">Merch Item 02</h3><p class="merchDesc">Drop an image above and rename this.</p></div>
+        </article>
+        <article class="merchTile">
+          <div class="merchImg">Image 3</div>
+          <div class="merchBody"><h3 class="merchName">Merch Item 03</h3><p class="merchDesc">Drop an image above and rename this.</p></div>
+        </article>
+        <article class="merchTile">
+          <div class="merchImg">Image 4</div>
+          <div class="merchBody"><h3 class="merchName">Merch Item 04</h3><p class="merchDesc">Drop an image above and rename this.</p></div>
+        </article>
+        <article class="merchTile">
+          <div class="merchImg">Image 5</div>
+          <div class="merchBody"><h3 class="merchName">Merch Item 05</h3><p class="merchDesc">Drop an image above and rename this.</p></div>
+        </article>
+        <article class="merchTile">
+          <div class="merchImg">Image 6</div>
+          <div class="merchBody"><h3 class="merchName">Merch Item 06</h3><p class="merchDesc">Drop an image above and rename this.</p></div>
+        </article>
       </div>
     </section>
 
-    <!-- VALUE PROPS -->
-    <section>
-      <div class="container">
-        <h2 class="section-title reveal">Designed for real-world performance.</h2>
-        <p class="section-sub reveal delay1">
-          Jardín University makes learning feel elevated and easy.
-        </p>
-
-        <div class="grid-3">
-          <div class="card reveal">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3l9 4.5-9 4.5L3 7.5 12 3Z" stroke="currentColor" stroke-width="1.6" />
-                <path d="M21 7.5v9L12 21l-9-4.5v-9" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
-              </svg>
-            </div>
-            <h3>All-Access Learning</h3>
-            <p>Subscribe for full library access, certificates, and future class drops.</p>
-          </div>
-
-          <div class="card reveal delay1">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.6" />
-                <path d="M4 12h3M17 12h3M12 4v3M12 17v3" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
-              </svg>
-            </div>
-            <h3>Modern Modules</h3>
-            <p>Short lessons, beautiful flow, and a premium learner experience on mobile.</p>
-          </div>
-
-          <div class="card reveal delay2">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M6 10h12v10H6V10Z" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
-              </svg>
-            </div>
-            <h3>Certificates</h3>
-            <p>Cannabis Consultant certificates designed to be shareable and verification-ready.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing">
-      <div class="container">
-        <h2 class="section-title reveal">Choose how you want to learn.</h2>
-        <p class="section-sub reveal delay1">
-          Go all-in with All-Access, or start with a single class. Either way: premium training, real outcomes.
-        </p>
-
-        <div class="pricing-wrap">
-          <div class="price-card featured reveal">
-            <div class="price-head">
-              <div>
-                <span class="badge">Best Value</span>
-                <h3 style="margin-top:10px;">All-Access Subscription</h3>
-                <p class="desc">Full access to all classes + certificates.</p>
-              </div>
-            </div>
-
-            <div class="toggle" aria-label="Sale toggle">
-              <div class="switch on" id="saleSwitch" role="switch" aria-checked="true" tabindex="0"></div>
-              <div><strong>Sale on</strong> <span style="opacity:.7">($199)</span></div>
-            </div>
-
-            <div class="price" aria-live="polite">
-              <div class="now" id="allAccessNow">$199</div>
-              <div class="was" id="allAccessWas">$399</div>
-              <div class="per">one-time (limited)</div>
-            </div>
-
-            <ul class="ul">
-              <li><span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span> All classes (20+ and growing)</li>
-              <li><span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span> Cannabis Consultant Certificate track</li>
-              <li><span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span> Certificates + proof of completion</li>
-              <li><span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span> Priority updates as new classes drop</li>
-            </ul>
-
-            <button class="btn primary" style="width:100%; justify-content:center;" id="buyAllAccess">
-              Enroll All-Access
-              <span aria-hidden="true">→</span>
-            </button>
-
-            <p style="margin:12px 0 0; color:var(--muted2); font-size:12px; line-height:1.6;">
-              *Checkout button is a placeholder right now. You’ll connect Stripe/Shopify later.
-            </p>
-          </div>
-
-          <div class="price-card reveal delay1">
-            <div class="price-head">
-              <div>
-                <h3>Single Course</h3>
-                <p class="desc">Purchase any individual class and earn its certificate.</p>
-              </div>
-            </div>
-
-            <div class="price">
-              <div class="now">$99</div>
-              <div class="per">per course</div>
-            </div>
-
-            <ul class="ul">
-              <li><span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span> Pick any class from the library</li>
-              <li><span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span> Certificate included for that course</li>
-              <li><span class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span> Great for teams + targeted upskilling</li>
-            </ul>
-
-            <a class="btn" style="width:100%; justify-content:center;" href="#courses">
-              Choose a course
-              <span aria-hidden="true">↘</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COURSES -->
-    <section id="courses">
-      <div class="container">
-        <h2 class="section-title reveal">Explore the class library.</h2>
-        <p class="section-sub reveal delay1">
-          Below is a starter library list (20+). We can rename these to your exact catalog and add course pages later.
-        </p>
-
-        <div class="courses-tools reveal delay2">
-          <div class="search" role="search">
-            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="1.7" opacity=".9"/>
-              <path d="M16.4 16.4 21 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".9"/>
-            </svg>
-            <input id="courseSearch" type="search" placeholder="Search courses (e.g., terpenes, sales, compliance)..." />
-          </div>
-          <div class="pill"><span class="dot" aria-hidden="true"></span> Click “Buy” to simulate $99 checkout</div>
-        </div>
-
-        <div class="courses-grid" id="coursesGrid">
-          <!-- 20+ course cards generated by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATE -->
-    <section id="certificate">
-      <div class="container">
-        <h2 class="section-title reveal">Cannabis Consultant Certificate.</h2>
-        <p class="section-sub reveal delay1">
-          Trusted by award-winning budtenders.
-        </p>
-
-        <div class="certificate reveal delay2">
-          <div>
-            <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-              <div class="seal" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2l2.6 6.2L21 11l-6.4 2.7L12 20l-2.6-6.3L3 11l6.4-2.8L12 2Z" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
-                </svg>
-              </div>
-              <div>
-                <div class="mini-title">VERIFY-READY</div>
-                <h3 style="margin:0; font-size:24px; letter-spacing:-.02em;">Jardin University Certificate</h3>
-                <p style="margin:6px 0 0; color:var(--muted); line-height:1.6;">
-                  Completion. Certification. Credibility.
-                </p>
-              </div>
-            </div>
-
-            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn primary" href="#pricing">Get All-Access</a>
-              <a class="btn" href="#courses">Pick a course</a>
-            </div>
-          </div>
-
-          <div class="cert-right" aria-hidden="true">
-            <div class="mini-title" style="margin-bottom:8px;">Certificate Preview</div>
-            <div class="cert-lines w3"></div>
-            <div class="cert-lines w"></div>
-            <div class="cert-lines w2"></div>
-            <div class="cert-lines w4"></div>
-            <div style="height:12px;"></div>
-            <div class="cert-lines w3"></div>
-            <div class="cert-lines w"></div>
-            <div class="cert-lines w2"></div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer>
-    <div class="container foot">
-      <div>
-        <div class="brand" style="margin-bottom:10px;">
-          <div class="mark" aria-hidden="true"></div>
-          <span>Jardin University</span>
-        </div>
-        <small>
-          Premium cannabis education. Certificates. Real-world training.<br/>
-          © <span id="year"></span> Jardin University. All rights reserved.
-        </small>
-      </div>
-
-      <div class="links">
-        <a href="#program">Program</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#courses">Classes</a>
-        <a href="#certificate">Certificate</a>
-      </div>
-    </div>
-  </footer>
-
   <script>
-    // Smooth scroll (safe)
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const id = a.getAttribute('href');
-        if (!id || id === '#') return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-    // Reveal on scroll
-    const reveals = Array.from(document.querySelectorAll('.reveal'));
+    // ==============================
+    // Reveal observer (for course cards)
+    // ==============================
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('in');
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          e.target.classList.add('isIn');
+          io.unobserve(e.target);
+        }
       });
     }, { threshold: 0.12 });
-    reveals.forEach(el => io.observe(el));
 
-    // Mouse highlight on showcase
-    const showcase = document.querySelector('.showcase');
-    if (showcase) {
-      showcase.addEventListener('pointermove', (e) => {
-        const r = showcase.getBoundingClientRect();
-        const x = ((e.clientX - r.left) / r.width) * 100;
-        const y = ((e.clientY - r.top) / r.height) * 100;
-        showcase.style.setProperty('--mx', x + '%');
-        showcase.style.setProperty('--my', y + '%');
+    // ==============================
+    // Rail: dots + drag
+    // ==============================
+    const rail = document.getElementById('rail');
+    const dotsWrap = document.getElementById('dots');
+
+    function tiles(){
+      return Array.from(rail?.querySelectorAll?.('.tile') || []);
+    }
+
+    function tileStep(){
+      const firstTile = rail?.querySelector?.('.tile');
+      if(!firstTile) return 600;
+      const styles = getComputedStyle(rail);
+      const gap = parseFloat(styles.columnGap || styles.gap || 18);
+      return firstTile.getBoundingClientRect().width + gap;
+    }
+
+    function buildDots(){
+      if(!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      tiles().forEach((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'dotBtn' + (i === 0 ? ' isActive' : '');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Go to slide ' + (i+1));
+        b.addEventListener('click', () => {
+          rail?.scrollTo({ left: i * tileStep(), behavior: 'smooth' });
+        });
+        dotsWrap.appendChild(b);
       });
     }
 
-    // Animated counters (simple, premium feel)
-    function animateCount(el, to) {
-      const start = 0;
-      const dur = 900;
-      const t0 = performance.now();
-      const isPlus = el.textContent.trim().includes('+');
-      function tick(t){
-        const p = Math.min(1, (t - t0) / dur);
-        const v = Math.round(start + (to - start) * (1 - Math.pow(1 - p, 3)));
-        el.textContent = v + (isPlus ? '+' : '');
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
+    function setActiveDot(){
+      if(!rail || !dotsWrap) return;
+      const step = tileStep();
+      const idx = Math.round(rail.scrollLeft / step);
+      const btns = dotsWrap.querySelectorAll('.dotBtn');
+      btns.forEach((b, i) => b.classList.toggle('isActive', i === Math.max(0, Math.min(idx, btns.length-1))));
     }
 
-    const counterEls = document.querySelectorAll('[data-count]');
-    const counterIO = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const to = Number(el.getAttribute('data-count')) || 0;
-        animateCount(el, to);
-        counterIO.unobserve(el);
-      });
-    }, { threshold: 0.6 });
-    counterEls.forEach(el => counterIO.observe(el));
+    // drag-to-scroll
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
 
-    // Pricing sale toggle
-    const saleSwitch = document.getElementById('saleSwitch');
-    const now = document.getElementById('allAccessNow');
-    const was = document.getElementById('allAccessWas');
+    rail?.addEventListener('pointerdown', (e) => {
+      isDown = true;
+      rail.setPointerCapture(e.pointerId);
+      startX = e.clientX;
+      scrollStart = rail.scrollLeft;
+      rail.style.scrollBehavior = 'auto';
+    });
 
-    function setSale(on){
-      saleSwitch.classList.toggle('on', on);
-      saleSwitch.setAttribute('aria-checked', on ? 'true' : 'false');
-      if (on){
-        now.textContent = '$199';
-        was.style.display = '';
-      } else {
-        now.textContent = '$399';
-        was.style.display = 'none';
-      }
+    rail?.addEventListener('pointermove', (e) => {
+      if(!isDown) return;
+      const dx = (e.clientX - startX);
+      rail.scrollLeft = scrollStart - dx;
+      setActiveDot();
+    });
+
+    function endDrag(){
+      if(!isDown) return;
+      isDown = false;
+      if(rail) rail.style.scrollBehavior = '';
+      setActiveDot();
     }
 
-    if (saleSwitch){
-      saleSwitch.addEventListener('click', () => setSale(!saleSwitch.classList.contains('on')));
-      saleSwitch.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSale(!saleSwitch.classList.contains('on')); }
-      });
-      setSale(true);
-    }
+    rail?.addEventListener('pointerup', endDrag);
+    rail?.addEventListener('pointercancel', endDrag);
+    rail?.addEventListener('mouseleave', endDrag);
+    rail?.addEventListener('scroll', () => { setActiveDot(); }, { passive:true });
+    window.addEventListener('resize', () => { buildDots(); setActiveDot(); });
 
-    // Course catalog (edit names later)
+    buildDots();
+    setActiveDot();
+
+    // ==============================
+    // Quick tiles actions
+    // ==============================
+    function clicky(el, fn){
+      el?.addEventListener('click', fn);
+      el?.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fn(); }});
+    }
+    const qtCareer = document.getElementById('qtCareer');
+    const qtSkills = document.getElementById('qtSkills');
+    const qtSpec = document.getElementById('qtSpec');
+    const catalogSection = document.getElementById('catalog');
+    clicky(qtCareer, ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
+    clicky(qtSkills, ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
+    clicky(qtSpec, ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
+
+    // ==============================
+    // Course catalog (FULL list)
+    // ==============================
     const COURSES = [
       { title:"Cannabis 101: Foundations", tag:"Core", desc:"Plant basics, product types, and industry language.", price:99, keywords:"foundations basics beginner" },
       { title:"Cannabinoids: CBD, THC & Beyond", tag:"Science", desc:"How cannabinoids work, effects, and product matching.", price:99, keywords:"cannabinoids cbd thc science" },
@@ -1202,7 +1272,7 @@
 
     function courseCard(c){
       const el = document.createElement('div');
-      el.className = 'course reveal';
+      el.className = 'course';
       el.setAttribute('data-title', (c.title + " " + c.keywords).toLowerCase());
       el.innerHTML = `
         <div class="course-top">
@@ -1223,48 +1293,97 @@
       return el;
     }
 
-    if (grid){
+    function renderCourses(){
+      if (!grid) return;
+      grid.innerHTML = "";
       COURSES.forEach((c, idx) => {
         const el = courseCard(c);
-        // small stagger effect
         el.style.transitionDelay = (Math.min(idx, 9) * 0.04) + 's';
         grid.appendChild(el);
-        io.observe(el); // reuse reveal observer
+        io.observe(el);
       });
     }
 
-    // Search filter
-    const search = document.getElementById('courseSearch');
-    if (search && grid){
-      search.addEventListener('input', () => {
-        const q = search.value.trim().toLowerCase();
-        const items = grid.querySelectorAll('.course');
-        items.forEach(card => {
-          const hay = card.getAttribute('data-title') || '';
-          const show = !q || hay.includes(q);
-          card.style.display = show ? '' : 'none';
-        });
+    renderCourses();
+
+    // Search filter (catalog)
+    const courseSearch = document.getElementById('courseSearch');
+    function applyCatalogFilter(q){
+      if (!grid) return;
+      const query = (q || "").trim().toLowerCase();
+      const items = grid.querySelectorAll('.course');
+      items.forEach(card => {
+        const hay = card.getAttribute('data-title') || '';
+        card.style.display = (!query || hay.includes(query)) ? '' : 'none';
       });
     }
+    courseSearch?.addEventListener('input', () => applyCatalogFilter(courseSearch.value));
 
-    // CTA buttons (placeholder checkout)
-    const buyAll = document.getElementById('buyAllAccess');
-    const ctaAll = document.getElementById('ctaAllAccess');
+    // Header Search -> scroll to catalog + filter
+    const headerSearch = document.getElementById('headerSearch');
+    const headerSearchBtn = document.getElementById('headerSearchBtn');
+
+    function goSearch(){
+      const q = (headerSearch?.value || "").trim();
+      catalogSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (courseSearch){
+        courseSearch.value = q;
+        applyCatalogFilter(q);
+        setTimeout(() => courseSearch.focus(), 450);
+      } else {
+        applyCatalogFilter(q);
+      }
+    }
+
+    headerSearchBtn?.addEventListener('click', (e) => { e.preventDefault(); goSearch(); });
+    headerSearch?.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter'){ e.preventDefault(); goSearch(); }
+    });
+
+    // Sale toggle + All-Access checkout
+    const saleSwitch = document.getElementById('saleSwitch');
+    const priceNew = document.getElementById('priceNew');
+    const badgePrice = document.getElementById('badgePrice');
+
+    function setSaleUI(){
+      const on = saleSwitch?.classList.contains('on');
+      if (priceNew){
+        priceNew.textContent = on ? "$199" : "$399";
+        priceNew.classList.toggle('isSale', on);
+      }
+      if (badgePrice){
+        badgePrice.textContent = on ? "$199" : "$399";
+      }
+    }
+
+    function toggleSale(){
+      if(!saleSwitch) return;
+      saleSwitch.classList.toggle('on');
+      saleSwitch.setAttribute('aria-checked', saleSwitch.classList.contains('on') ? "true" : "false");
+      setSaleUI();
+    }
+
+    saleSwitch?.addEventListener('click', toggleSale);
+    saleSwitch?.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        toggleSale();
+      }
+    });
+
+    setSaleUI();
+
     function allAccessPrice(){
       const on = saleSwitch?.classList.contains('on');
       return on ? 199 : 399;
     }
+
     function checkoutAllAccess(){
       alert("Placeholder checkout: $" + allAccessPrice() + "\\n\\nNext step: connect Stripe/Shopify checkout link for All-Access.");
     }
-    buyAll?.addEventListener('click', checkoutAllAccess);
-    ctaAll?.addEventListener('click', (e)=>{ /* anchor scroll already */ });
 
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('buyAllAccess')?.addEventListener('click', checkoutAllAccess);
+    document.getElementById('ctaPlus')?.addEventListener('click', checkoutAllAccess);
   </script>
 </body>
 </html>
-
-
-
