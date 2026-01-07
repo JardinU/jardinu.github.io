@@ -24,9 +24,9 @@
       --easeApple: cubic-bezier(.22,.61,.36,1);
 
       --brandGreen:#0FA958;
-      --ink:#111;
 
-      --saleRed:#E53935; /* sale red */
+      --saleRed:#E53935;
+
       --dot: rgba(17,17,17,.28);
       --dotOn: rgba(17,17,17,.85);
     }
@@ -47,7 +47,7 @@
     .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 
     /* ==============================
-       TOP BAR (Coursera-like tabs)
+       TOP BAR (tabs)
        ============================== */
     .topbar{
       background: rgba(0,0,0,.86);
@@ -86,7 +86,7 @@
     }
 
     /* ==============================
-       MAIN HEADER (logo + search)
+       MAIN HEADER
        ============================== */
     .header{
       background: rgba(255,255,255,.78);
@@ -110,18 +110,12 @@
       gap: 10px;
       min-width: 210px;
     }
-
-    /* JU crest logo */
     .brandLogo{
       height: 28px;
       width: auto;
       display:block;
       filter: drop-shadow(0 10px 18px rgba(0,0,0,.10));
     }
-
-    /* ✅ removed green square: keep element but hide */
-    .logoRect{ display:none !important; }
-
     .brandName{
       font-weight: 800;
       letter-spacing: .2px;
@@ -227,9 +221,10 @@
     .primaryBtn:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.10); }
 
     /* ==============================
-       SECTIONS
+       Sections
        ============================== */
     .section{ padding: 22px 0; }
+
     .sectionTitleRow{
       display:flex;
       align-items:flex-end;
@@ -239,7 +234,6 @@
       margin-bottom: 14px;
     }
 
-    /* ✅ removed green dot everywhere (kicker marker) */
     .kicker{
       color: rgba(17,17,17,.65);
       font-size: 13px;
@@ -248,68 +242,9 @@
       align-items:center;
       gap:10px;
     }
-    .dot{ display:none !important; }
 
     /* ==============================
-       QUICK TILES (under header)
-       ============================== */
-    .quickTiles{
-      padding-top: 18px;
-      padding-bottom: 12px;
-    }
-    .quickGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .quickTile{
-      border-radius: 26px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(17,17,17,.08);
-      box-shadow: 0 18px 70px rgba(0,0,0,.06);
-      padding: 20px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      min-height: 92px;
-      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
-      cursor: pointer;
-      user-select:none;
-    }
-    .quickTile:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 26px 92px rgba(0,0,0,.09);
-    }
-    .quickTitle{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -.01em;
-      font-weight: 900;
-      color: rgba(17,17,17,.92);
-    }
-    .quickIcon{
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display:grid;
-      place-items:center;
-      background: radial-gradient(80px 60px at 50% 40%, rgba(0,122,255,.12), rgba(0,0,0,0) 65%),
-                  rgba(124,92,255,.08);
-      border: 1px solid rgba(17,17,17,.06);
-    }
-    .quickIcon svg{
-      width: 28px;
-      height: 28px;
-      stroke: rgba(0,122,255,.85);
-      stroke-width: 2.2;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* ==============================
-       RAIL
+       Rail
        ============================== */
     .heroRail{ position: relative; margin-top: 10px; }
     .railViewport{ overflow: hidden; border-radius: calc(var(--tileRadius) + 6px); }
@@ -411,6 +346,7 @@
     .cta{
       display:inline-flex;
       align-items:center;
+      justify-content:center;
       gap:10px;
       height: 44px;
       padding: 0 16px;
@@ -422,9 +358,11 @@
       transition: transform .18s var(--easeOut), opacity .18s var(--easeOut);
       user-select:none;
       cursor:pointer;
+      white-space: nowrap;
     }
     .cta:active{ transform: scale(.99); }
     .cta svg{ width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.6; fill:none; }
+
     .tileMedia{
       position: relative;
       min-height: 340px;
@@ -440,7 +378,7 @@
                    #0558d4; }
     .t3{ background: radial-gradient(900px 540px at 75% 50%, rgba(255,0,128,.14), rgba(0,0,0,0) 58%),
                    radial-gradient(720px 420px at 20% 30%, rgba(0,122,255,.12), rgba(0,0,0,0) 58%),
-                   #fff; color: var(--ink); }
+                   #fff; color: #111; }
     .t3 .tileDesc{ color: rgba(17,17,17,.70); }
     .t3 .cta{
       background: rgba(0,122,255,.92);
@@ -448,50 +386,30 @@
       border-color: rgba(0,122,255,.35);
     }
 
+    /* price badge on tile 1 */
     .badge{
       position:absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,.35);
+      right: 26px;
+      bottom: 26px;
+      background: rgba(0,0,0,.32);
       color: rgba(255,255,255,.95);
       border: 1px solid rgba(255,255,255,.18);
-      padding: 12px 16px;
+      padding: 14px 16px;
       border-radius: 18px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      font-weight: 900;
+      font-weight: 950;
       text-align:center;
       line-height: 1.05;
       box-shadow: 0 22px 60px rgba(0,0,0,.18);
     }
-    .badge .big{ font-size: 30px; letter-spacing: -.02em; }
-    .badge .small{ font-size: 12px; opacity: .9; font-weight: 700; margin-top: 2px; }
+    .badge .big{ font-size: 34px; letter-spacing: -.02em; }
+    .badge .small{ font-size: 12px; opacity: .9; font-weight: 750; margin-top: 2px; }
 
-    .logoStack{
-      display:flex;
-      gap: 12px;
-      align-items:flex-end;
-      position:absolute;
-      bottom: 22px;
-      right: 22px;
-    }
-    .logoBubble{
-      width: 58px;
-      height: 58px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.86);
-      display:grid;
-      place-items:center;
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 18px 40px rgba(0,0,0,.16);
-      font-weight: 900;
-      color: rgba(0,0,0,.60);
-      user-select:none;
-    }
+    /* ✅ removed JU/CC/check stack (no CSS needed) */
 
     /* ==============================
-       ✅ Apple dots (replace arrows)
+       Apple dots (carousel)
        ============================== */
     .railNav{
       display:flex;
@@ -524,7 +442,170 @@
     .dotBtn.isActive{ background: var(--dotOn); transform: scale(1.25); }
 
     /* ==============================
-       CATALOG + SALE ROW
+       Quick tiles (NOW BELOW wide tiles)
+       ============================== */
+    .quickTiles{
+      padding-top: 12px;
+      padding-bottom: 6px;
+    }
+    .quickGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .quickTile{
+      border-radius: 26px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(17,17,17,.08);
+      box-shadow: 0 18px 70px rgba(0,0,0,.06);
+      padding: 18px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      min-height: 88px;
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
+      cursor: pointer;
+      user-select:none;
+    }
+    .quickTile:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 26px 92px rgba(0,0,0,.09);
+    }
+    .quickTitle{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -.01em;
+      font-weight: 900;
+      color: rgba(17,17,17,.92);
+    }
+    .quickIcon{
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(80px 60px at 50% 40%, rgba(0,122,255,.12), rgba(0,0,0,0) 65%),
+                  rgba(124,92,255,.08);
+      border: 1px solid rgba(17,17,17,.06);
+    }
+    .quickIcon svg{
+      width: 28px;
+      height: 28px;
+      stroke: rgba(0,122,255,.85);
+      stroke-width: 2.2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ==============================
+       Hot New Releases (card rail like Coursera)
+       ============================== */
+    .hotWrap{
+      border-radius: 34px;
+      background: linear-gradient(90deg, #1d66ff, #36b6ff, #43d7b4);
+      padding: 18px;
+      box-shadow: 0 26px 90px rgba(0,0,0,.12);
+    }
+    .hotTitle{
+      color: rgba(255,255,255,.95);
+      font-weight: 950;
+      letter-spacing: -.01em;
+      margin: 0 0 12px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 18px;
+    }
+    .hotTitle span{ opacity: .95; }
+    .hotTitle svg{ width: 18px; height: 18px; stroke:#fff; stroke-width:2.6; fill:none; }
+
+    .hotRail{
+      display:flex;
+      gap: 18px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width:none;
+    }
+    .hotRail::-webkit-scrollbar{ display:none; }
+
+    .hotCard{
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: min(320px, calc(100vw - 96px));
+      border-radius: 22px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 18px 55px rgba(0,0,0,.12);
+      overflow:hidden;
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
+    }
+    .hotCard:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 26px 85px rgba(0,0,0,.16);
+    }
+    .hotImg{
+      height: 170px;
+      background: linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,.02));
+      position: relative;
+      overflow:hidden;
+    }
+    .hotImg img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .hotBody{ padding: 14px 14px 16px; }
+    .hotBrand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: rgba(17,17,17,.68);
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .hotBrand .miniLogo{
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.8);
+      display:grid; place-items:center;
+      font-weight: 950;
+      font-size: 12px;
+      color: rgba(17,17,17,.62);
+    }
+    .hotName{
+      margin: 0 0 10px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      line-height: 1.15;
+      font-size: 18px;
+    }
+    .hotMeta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color: rgba(17,17,17,.60);
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    .stars{
+      display:flex;
+      align-items:center;
+      gap: 6px;
+      font-weight: 900;
+      color: rgba(17,17,17,.70);
+    }
+    .stars svg{ width: 14px; height: 14px; fill: rgba(17,17,17,.75); }
+
+    /* ==============================
+       Catalog + sale row
        ============================== */
     .catalogHeader{
       display:flex;
@@ -533,7 +614,7 @@
       gap: 14px;
       flex-wrap: wrap;
       margin-bottom: 14px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
     .catalogTitle{
       margin: 0;
@@ -638,7 +719,7 @@
     .btnGhost:active{ transform: scale(.99); }
 
     /* ==============================
-       COURSE CARDS
+       Courses grid
        ============================== */
     .coursesGrid{
       display:grid;
@@ -728,11 +809,74 @@
       box-shadow: 0 10px 26px rgba(0,0,0,.06);
     }
     .btn:active{ transform: scale(.99); }
-    .btn.small{ height: 38px; }
     .btn:hover{ box-shadow: 0 14px 34px rgba(0,0,0,.08); transform: translateY(-1px); }
 
     /* ==============================
-       RESPONSIVE
+       Merch section
+       ============================== */
+    .merchHeader{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      margin-top: 6px;
+    }
+    .merchTitle{
+      margin:0;
+      font-size: 22px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      color: rgba(17,17,17,.92);
+    }
+    .merchGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .merchTile{
+      border-radius: 22px;
+      border: 1px solid rgba(17,17,17,.10);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 18px 60px rgba(0,0,0,.07);
+      overflow:hidden;
+      transition: transform .22s var(--easeApple), box-shadow .22s var(--easeApple);
+      min-height: 280px;
+    }
+    .merchTile:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 26px 85px rgba(0,0,0,.10);
+    }
+    .merchImg{
+      height: 170px;
+      background: linear-gradient(135deg, rgba(0,0,0,.08), rgba(0,0,0,.02));
+      display:grid;
+      place-items:center;
+      color: rgba(17,17,17,.45);
+      font-weight: 900;
+      letter-spacing:.2px;
+      user-select:none;
+    }
+    .merchBody{
+      padding: 14px 14px 16px;
+    }
+    .merchName{
+      margin:0 0 6px;
+      font-weight: 950;
+      letter-spacing: -.01em;
+      font-size: 16px;
+    }
+    .merchDesc{
+      margin:0;
+      color: rgba(17,17,17,.62);
+      font-weight: 650;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    /* ==============================
+       Responsive
        ============================== */
     @media (max-width: 980px){
       .header .wrap{ flex-wrap: wrap; }
@@ -741,14 +885,17 @@
       .searchBox{ max-width: none; }
       .auth{ margin-left: auto; }
 
-      .quickGrid{ grid-template-columns: 1fr; }
       .tileGrid{ grid-template-columns: 1fr; }
       .tileMedia{ min-height: 240px; }
       .tile{ min-height: unset; }
       .tileBody{ padding: 34px 28px 26px; }
 
+      .quickGrid{ grid-template-columns: 1fr; }
+
       .coursesGrid{ grid-template-columns: 1fr; }
+      .merchGrid{ grid-template-columns: 1fr; }
     }
+
     @media (max-width: 520px){
       .topbar .wrap{ gap: 12px; }
       .tabs{ gap: 14px; }
@@ -761,7 +908,7 @@
 
 <body>
 
-  <!-- Top banner tabs -->
+  <!-- Tabs -->
   <div class="topbar">
     <div class="wrap">
       <nav class="tabs" aria-label="Audience">
@@ -771,12 +918,11 @@
     </div>
   </div>
 
-  <!-- Main header -->
+  <!-- Header -->
   <header class="header">
     <div class="wrap">
       <a class="brand" href="#">
         <img class="brandLogo" src="media/JU-Crest-Logo-Black.png" alt="Jardín University" />
-        <span class="logoRect" aria-hidden="true"></span>
         <span>
           <span class="brandName">Jardín University</span>
           <span class="brandSub">Premium Learning</span>
@@ -785,6 +931,7 @@
 
       <nav class="navLinks" aria-label="Primary">
         <a class="navPill" href="#catalog">Courses</a>
+        <a class="navPill" href="#merch">Merch</a>
       </nav>
 
       <div class="search" role="search">
@@ -808,7 +955,89 @@
 
   <main class="wrap">
 
-    <!-- ✅ NEW: 3 tiles under header -->
+    <!-- WIDE TILES -->
+    <section class="section">
+      <div class="sectionTitleRow">
+        <div class="kicker">Cannabis Consultant Certificate</div>
+
+        <!-- dots -->
+        <div class="railNav" aria-label="Carousel dots">
+          <div class="dots" id="dots"></div>
+        </div>
+      </div>
+
+      <div class="heroRail">
+        <div class="railFade left"></div>
+        <div class="railFade right"></div>
+
+        <div class="railViewport">
+          <div class="rail" id="rail">
+
+            <!-- Tile 1 -->
+            <article class="tile t1" aria-label="Jardín Plus promotion">
+              <div class="tileGrid">
+                <div class="tileBody" style="color: rgba(255,255,255,.92);">
+                  <div class="tileEyebrow">Jardín <span class="miniTag">PLUS</span></div>
+                  <h3 class="tileTitle">Next level skills. New Year savings.</h3>
+                  <p class="tileDesc">Premium, mobile-first learning that’s clean, fast, and built for real work.</p>
+                  <div class="tileCtaRow">
+                    <button class="cta" id="ctaPlus" type="button">
+                      Save 50% on Jardín Plus
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="tileMedia">
+                  <div class="badge" aria-label="Price badge">
+                    <div class="big" id="badgePrice">$199</div>
+                    <div class="small">/ year</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tile 2 -->
+            <article class="tile t2" aria-label="Jardín for Teams promotion">
+              <div class="tileGrid">
+                <div class="tileBody" style="color: rgba(255,255,255,.92);">
+                  <div class="tileEyebrow">Jardín <span style="font-weight:800;opacity:.92;">for teams</span></div>
+                  <h3 class="tileTitle">Train your team in top skills worldwide.</h3>
+                  <p class="tileDesc">Structured learning that supports standards, and consistent floor performance.</p>
+                  <div class="tileCtaRow">
+                    <button class="cta" type="button">
+                      Save 50% on Teams
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="tileMedia"></div>
+              </div>
+            </article>
+
+            <!-- Tile 3 -->
+            <article class="tile t3" aria-label="Career tile">
+              <div class="tileGrid">
+                <div class="tileBody">
+                  <div class="tileEyebrow" style="color: rgba(17,17,17,.82);">Jardín University</div>
+                  <h3 class="tileTitle">Start, switch, or advance your career.</h3>
+                  <p class="tileDesc">Grow with 10,000+ students.</p>
+                  <div class="tileCtaRow">
+                    <a class="cta" href="#catalog">
+                      Explore the class library
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+                    </a>
+                  </div>
+                </div>
+                <div class="tileMedia"></div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ MOVED: 3 tiles below wide tiles -->
     <section class="quickTiles">
       <div class="quickGrid">
         <article class="quickTile" id="qtCareer" role="button" tabindex="0" aria-label="Launch a new career">
@@ -834,94 +1063,81 @@
       </div>
     </section>
 
-    <!-- FEATURED TILES RAIL -->
-    <section class="section">
-      <div class="sectionTitleRow">
-        <div class="kicker">Cannabis Consultant Certificate</div>
+    <!-- ✅ NEW: Hot New Releases (above Course Catalog) -->
+    <section class="section" aria-label="Hot new releases">
+      <div class="hotWrap">
+        <h2 class="hotTitle">
+          <span>Hot New Releases</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </h2>
 
-        <!-- ✅ Apple dots -->
-        <div class="railNav" aria-label="Carousel dots">
-          <div class="dots" id="dots"></div>
-        </div>
-      </div>
-
-      <div class="heroRail">
-        <div class="railFade left"></div>
-        <div class="railFade right"></div>
-
-        <div class="railViewport">
-          <div class="rail" id="rail">
-
-            <!-- TILE 1 -->
-            <article class="tile t1" aria-label="Jardín Plus promotion">
-              <div class="tileGrid">
-                <div class="tileBody" style="color: rgba(255,255,255,.92);">
-                  <div class="tileEyebrow">Jardín <span class="miniTag">PLUS</span></div>
-                  <h3 class="tileTitle">Next level skills. New Year savings.</h3>
-                  <p class="tileDesc">Premium, mobile-first learning that’s clean, fast, and built for real work.</p>
-                  <div class="tileCtaRow">
-                    <button class="cta" id="ctaPlus" type="button">
-                      Save 50% on Jardín Plus
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="tileMedia">
-                  <div class="badge" aria-label="Price badge">
-                    <div class="big" id="badgePrice">$199</div>
-                    <div class="small">/ year</div>
-                  </div>
-                  <div class="logoStack" aria-hidden="true">
-                    <div class="logoBubble">JU</div>
-                    <div class="logoBubble">CC</div>
-                    <div class="logoBubble">✓</div>
-                  </div>
-                </div>
+        <div class="hotRail" id="hotRail">
+          <!-- 4 demo cards (swap images later) -->
+          <article class="hotCard">
+            <div class="hotImg"><!-- put <img src="media/..." /> later --></div>
+            <div class="hotBody">
+              <div class="hotBrand"><span class="miniLogo">JU</span> Jardín University</div>
+              <h3 class="hotName">Budtender Foundations: Fast Track</h3>
+              <div class="hotMeta">
+                <span>Professional Certificate</span>
+                <span class="stars">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.3l-6.2 3.6 1.6-7.1L2 8.9l7.2-.6L12 1.6l2.8 6.7 7.2.6-5.4 4.9 1.6 7.1z"/></svg>
+                  4.7
+                </span>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <!-- TILE 2 -->
-            <article class="tile t2" aria-label="Jardín for Teams promotion">
-              <div class="tileGrid">
-                <div class="tileBody" style="color: rgba(255,255,255,.92);">
-                  <div class="tileEyebrow">Jardín <span style="font-weight:800;opacity:.92;">for teams</span></div>
-                  <h3 class="tileTitle">Train your team in top skills worldwide.</h3>
-                  <p class="tileDesc">Structured learning that supports onboarding, standards, and consistent floor performance.</p>
-                  <div class="tileCtaRow">
-                    <button class="cta" type="button">
-                      Save 50% on Teams
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="tileMedia"></div>
+          <article class="hotCard">
+            <div class="hotImg"></div>
+            <div class="hotBody">
+              <div class="hotBrand"><span class="miniLogo">JU</span> Jardín University</div>
+              <h3 class="hotName">RAG for Retail: Answering Customers Fast</h3>
+              <div class="hotMeta">
+                <span>Specialization</span>
+                <span class="stars">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.3l-6.2 3.6 1.6-7.1L2 8.9l7.2-.6L12 1.6l2.8 6.7 7.2.6-5.4 4.9 1.6 7.1z"/></svg>
+                  4.6
+                </span>
               </div>
-            </article>
+            </div>
+          </article>
 
-            <!-- TILE 3 -->
-            <article class="tile t3" aria-label="Career tile">
-              <div class="tileGrid">
-                <div class="tileBody">
-                  <div class="tileEyebrow" style="color: rgba(17,17,17,.82);">Jardín University</div>
-                  <h3 class="tileTitle">Start, switch, or advance your career.</h3>
-                  <p class="tileDesc">Grow with 10,000+ students.</p>
-                  <div class="tileCtaRow">
-                    <a class="cta" href="#catalog">
-                      Explore the class library
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"></path><path d="M13 6l6 6-6 6"></path></svg>
-                    </a>
-                  </div>
-                </div>
-                <div class="tileMedia"></div>
+          <article class="hotCard">
+            <div class="hotImg"></div>
+            <div class="hotBody">
+              <div class="hotBrand"><span class="miniLogo">JU</span> Jardín University</div>
+              <h3 class="hotName">Terpenes: Sensory + Selling</h3>
+              <div class="hotMeta">
+                <span>Single course</span>
+                <span class="stars">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.3l-6.2 3.6 1.6-7.1L2 8.9l7.2-.6L12 1.6l2.8 6.7 7.2.6-5.4 4.9 1.6 7.1z"/></svg>
+                  4.8
+                </span>
               </div>
-            </article>
+            </div>
+          </article>
 
-          </div>
+          <article class="hotCard">
+            <div class="hotImg"></div>
+            <div class="hotBody">
+              <div class="hotBrand"><span class="miniLogo">JU</span> Jardín University</div>
+              <h3 class="hotName">Luxury Service Standards (2026)</h3>
+              <div class="hotMeta">
+                <span>Professional Certificate</span>
+                <span class="stars">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.3l-6.2 3.6 1.6-7.1L2 8.9l7.2-.6L12 1.6l2.8 6.7 7.2.6-5.4 4.9 1.6 7.1z"/></svg>
+                  4.7
+                </span>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- COURSE CATALOG SECTION -->
+    <!-- COURSE CATALOG -->
     <section class="section" id="catalog">
       <div class="catalogHeader">
         <div>
@@ -934,7 +1150,6 @@
         </div>
       </div>
 
-      <!-- All-Access controls -->
       <div class="allAccessRow" aria-label="All-access pricing">
         <div class="saleSwitch on" id="saleSwitch" role="switch" aria-checked="true" tabindex="0" title="Toggle sale price"></div>
         <div class="pricePill">
@@ -946,6 +1161,67 @@
       </div>
 
       <div id="coursesGrid" class="coursesGrid" aria-label="Courses grid"></div>
+    </section>
+
+    <!-- MERCH SECTION (bottom) -->
+    <section class="section" id="merch">
+      <div class="merchHeader">
+        <div>
+          <div class="kicker">Jardín University</div>
+          <h2 class="merchTitle">Merch</h2>
+        </div>
+      </div>
+
+      <div class="merchGrid" aria-label="Merch grid">
+        <!-- 6 tiles ready for images -->
+        <article class="merchTile">
+          <div class="merchImg">Image 1</div>
+          <div class="merchBody">
+            <h3 class="merchName">Merch Item 01</h3>
+            <p class="merchDesc">Drop an image in the top area and rename this.</p>
+          </div>
+        </article>
+
+        <article class="merchTile">
+          <div class="merchImg">Image 2</div>
+          <div class="merchBody">
+            <h3 class="merchName">Merch Item 02</h3>
+            <p class="merchDesc">Drop an image in the top area and rename this.</p>
+          </div>
+        </article>
+
+        <article class="merchTile">
+          <div class="merchImg">Image 3</div>
+          <div class="merchBody">
+            <h3 class="merchName">Merch Item 03</h3>
+            <p class="merchDesc">Drop an image in the top area and rename this.</p>
+          </div>
+        </article>
+
+        <article class="merchTile">
+          <div class="merchImg">Image 4</div>
+          <div class="merchBody">
+            <h3 class="merchName">Merch Item 04</h3>
+            <p class="merchDesc">Drop an image in the top area and rename this.</p>
+          </div>
+        </article>
+
+        <article class="merchTile">
+          <div class="merchImg">Image 5</div>
+          <div class="merchBody">
+            <h3 class="merchName">Merch Item 05</h3>
+            <p class="merchDesc">Drop an image in the top area and rename this.</p>
+          </div>
+        </article>
+
+        <article class="merchTile">
+          <div class="merchImg">Image 6</div>
+          <div class="merchBody">
+            <h3 class="merchName">Merch Item 06</h3>
+            <p class="merchDesc">Drop an image in the top area and rename this.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="section" style="padding-top: 6px; padding-bottom: 44px;">
@@ -1045,22 +1321,19 @@
     setActiveDot();
 
     // ==============================
-    // Quick tiles actions
+    // Quick tiles actions (scroll to catalog)
     // ==============================
+    const catalogSection = document.getElementById('catalog');
     function clicky(el, fn){
       el?.addEventListener('click', fn);
       el?.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fn(); }});
     }
-    const qtCareer = document.getElementById('qtCareer');
-    const qtSkills = document.getElementById('qtSkills');
-    const qtSpec = document.getElementById('qtSpec');
-    const catalogSection = document.getElementById('catalog');
-    clicky(qtCareer, ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
-    clicky(qtSkills, ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
-    clicky(qtSpec, ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
+    clicky(document.getElementById('qtCareer'), ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
+    clicky(document.getElementById('qtSkills'), ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
+    clicky(document.getElementById('qtSpec'), ()=> catalogSection?.scrollIntoView({ behavior:'smooth', block:'start' }));
 
     // ==============================
-    // Course catalog (FULL list)
+    // Course catalog (edit names later)
     // ==============================
     const COURSES = [
       { title:"Cannabis 101: Foundations", tag:"Core", desc:"Plant basics, product types, and industry language.", price:99, keywords:"foundations basics beginner" },
@@ -1102,7 +1375,7 @@
         <div class="course-mid">${c.desc}</div>
         <div class="course-bottom">
           <div class="price-mini">$${c.price} <span>per course</span></div>
-          <button class="btn small" data-buy="course">Buy</button>
+          <button class="btn" data-buy="course">Buy</button>
         </div>
       `;
       el.querySelector('[data-buy="course"]').addEventListener('click', () => {
@@ -1121,7 +1394,6 @@
         io.observe(el);
       });
     }
-
     renderCourses();
 
     // Search filter (catalog)
@@ -1158,7 +1430,9 @@
       if(e.key === 'Enter'){ e.preventDefault(); goSearch(); }
     });
 
-    // Sale toggle + All-Access checkout
+    // ==============================
+    // Sale toggle + All-Access checkout + tile badge sync
+    // ==============================
     const saleSwitch = document.getElementById('saleSwitch');
     const priceNew = document.getElementById('priceNew');
     const badgePrice = document.getElementById('badgePrice');
@@ -1202,6 +1476,70 @@
 
     document.getElementById('buyAllAccess')?.addEventListener('click', checkoutAllAccess);
     document.getElementById('ctaPlus')?.addEventListener('click', checkoutAllAccess);
+
+    // ==============================
+    // Build dots + active dot
+    // ==============================
+    function buildDots(){
+      if(!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      const list = tiles();
+      list.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'dotBtn' + (i === 0 ? ' isActive' : '');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Go to slide ' + (i+1));
+        b.addEventListener('click', () => {
+          rail?.scrollTo({ left: i * tileStep(), behavior: 'smooth' });
+        });
+        dotsWrap.appendChild(b);
+      });
+    }
+
+    function setActiveDot(){
+      if(!rail || !dotsWrap) return;
+      const step = tileStep();
+      const idx = Math.round(rail.scrollLeft / step);
+      const btns = dotsWrap.querySelectorAll('.dotBtn');
+      btns.forEach((b, i) => b.classList.toggle('isActive', i === Math.max(0, Math.min(idx, btns.length-1))));
+    }
+
+    // drag-to-scroll
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+
+    rail?.addEventListener('pointerdown', (e) => {
+      isDown = true;
+      rail.setPointerCapture(e.pointerId);
+      startX = e.clientX;
+      scrollStart = rail.scrollLeft;
+      rail.style.scrollBehavior = 'auto';
+    });
+
+    rail?.addEventListener('pointermove', (e) => {
+      if(!isDown) return;
+      const dx = (e.clientX - startX);
+      rail.scrollLeft = scrollStart - dx;
+      setActiveDot();
+    });
+
+    function endDrag(){
+      if(!isDown) return;
+      isDown = false;
+      if(rail) rail.style.scrollBehavior = '';
+      setActiveDot();
+    }
+
+    rail?.addEventListener('pointerup', endDrag);
+    rail?.addEventListener('pointercancel', endDrag);
+    rail?.addEventListener('mouseleave', endDrag);
+    rail?.addEventListener('scroll', () => { setActiveDot(); }, { passive:true });
+
+    window.addEventListener('resize', () => { buildDots(); setActiveDot(); });
+
+    buildDots();
+    setActiveDot();
   </script>
 </body>
 </html>
